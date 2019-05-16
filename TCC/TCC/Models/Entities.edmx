@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TccJobModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCategory" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sensor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPlant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPlant" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdSensor" Type="int" Nullable="false" />
+          <Property Name="ReadingTime" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Plant__IdCategor__4F7CD00D">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plant">
+              <PropertyRef Name="IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserPlant__IdPla__52593CB8">
+          <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
+          <End Role="UserPlant" Type="Self.UserPlant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPlant">
+              <PropertyRef Name="IdPlant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserPlant__IdSen__5441852A">
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="1" />
+          <End Role="UserPlant" Type="Self.UserPlant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPlant">
+              <PropertyRef Name="IdSensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserPlant__IdUse__534D60F1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPlant" Type="Self.UserPlant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPlant">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TccJobModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sensor" EntityType="Self.Sensor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPlant" EntityType="Self.UserPlant" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Plant__IdCategor__4F7CD00D" Association="Self.FK__Plant__IdCategor__4F7CD00D">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPlant__IdPla__52593CB8" Association="Self.FK__UserPlant__IdPla__52593CB8">
+            <End Role="Plant" EntitySet="Plant" />
+            <End Role="UserPlant" EntitySet="UserPlant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPlant__IdSen__5441852A" Association="Self.FK__UserPlant__IdSen__5441852A">
+            <End Role="Sensor" EntitySet="Sensor" />
+            <End Role="UserPlant" EntitySet="UserPlant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPlant__IdUse__534D60F1" Association="Self.FK__UserPlant__IdUse__534D60F1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPlant" EntitySet="UserPlant" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TccJobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="TccJobModel.Category" />
+          <EntitySet Name="Plant" EntityType="TccJobModel.Plant" />
+          <EntitySet Name="Sensor" EntityType="TccJobModel.Sensor" />
+          <EntitySet Name="User" EntityType="TccJobModel.User" />
+          <EntitySet Name="UserPlant" EntityType="TccJobModel.UserPlant" />
+          <AssociationSet Name="FK__Plant__IdCategor__4F7CD00D" Association="TccJobModel.FK__Plant__IdCategor__4F7CD00D">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Plant" EntitySet="Plant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPlant__IdPla__52593CB8" Association="TccJobModel.FK__UserPlant__IdPla__52593CB8">
+            <End Role="Plant" EntitySet="Plant" />
+            <End Role="UserPlant" EntitySet="UserPlant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPlant__IdSen__5441852A" Association="TccJobModel.FK__UserPlant__IdSen__5441852A">
+            <End Role="Sensor" EntitySet="Sensor" />
+            <End Role="UserPlant" EntitySet="UserPlant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserPlant__IdUse__534D60F1" Association="TccJobModel.FK__UserPlant__IdUse__534D60F1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPlant" EntitySet="UserPlant" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Plant" Relationship="TccJobModel.FK__Plant__IdCategor__4F7CD00D" FromRole="Category" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="TccJobModel.FK__Plant__IdCategor__4F7CD00D" FromRole="Plant" ToRole="Category" />
+          <NavigationProperty Name="UserPlant" Relationship="TccJobModel.FK__UserPlant__IdPla__52593CB8" FromRole="Plant" ToRole="UserPlant" />
+        </EntityType>
+        <EntityType Name="Sensor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserPlant" Relationship="TccJobModel.FK__UserPlant__IdSen__5441852A" FromRole="Sensor" ToRole="UserPlant" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserPlant" Relationship="TccJobModel.FK__UserPlant__IdUse__534D60F1" FromRole="User" ToRole="UserPlant" />
+        </EntityType>
+        <EntityType Name="UserPlant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReadingTime" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Plant" Relationship="TccJobModel.FK__UserPlant__IdPla__52593CB8" FromRole="UserPlant" ToRole="Plant" />
+          <NavigationProperty Name="Sensor" Relationship="TccJobModel.FK__UserPlant__IdSen__5441852A" FromRole="UserPlant" ToRole="Sensor" />
+          <NavigationProperty Name="User" Relationship="TccJobModel.FK__UserPlant__IdUse__534D60F1" FromRole="UserPlant" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Plant__IdCategor__4F7CD00D">
+          <End Type="TccJobModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="TccJobModel.Plant" Role="Plant" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__UserPlant__IdPla__52593CB8">
+          <End Type="TccJobModel.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="TccJobModel.UserPlant" Role="UserPlant" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__UserPlant__IdSen__5441852A">
+          <End Type="TccJobModel.Sensor" Role="Sensor" Multiplicity="1" />
+          <End Type="TccJobModel.UserPlant" Role="UserPlant" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__UserPlant__IdUse__534D60F1">
+          <End Type="TccJobModel.User" Role="User" Multiplicity="1" />
+          <End Type="TccJobModel.UserPlant" Role="UserPlant" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TccJobModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="TccJobModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plant">
+            <EntityTypeMapping TypeName="TccJobModel.Plant">
+              <MappingFragment StoreEntitySet="Plant">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sensor">
+            <EntityTypeMapping TypeName="TccJobModel.Sensor">
+              <MappingFragment StoreEntitySet="Sensor">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="TccJobModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPlant">
+            <EntityTypeMapping TypeName="TccJobModel.UserPlant">
+              <MappingFragment StoreEntitySet="UserPlant">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ReadingTime" ColumnName="ReadingTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK__Plant__IdCategor__4F7CD00D" TypeName="TccJobModel.FK__Plant__IdCategor__4F7CD00D" StoreEntitySet="Plant">
+            <EndProperty Name="Plant">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Category">
+              <ScalarProperty Name="Id" ColumnName="IdCategory" />
+            </EndProperty>
+            <Condition ColumnName="IdCategory" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__UserPlant__IdPla__52593CB8" TypeName="TccJobModel.FK__UserPlant__IdPla__52593CB8" StoreEntitySet="UserPlant">
+            <EndProperty Name="UserPlant">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Plant">
+              <ScalarProperty Name="Id" ColumnName="IdPlant" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__UserPlant__IdSen__5441852A" TypeName="TccJobModel.FK__UserPlant__IdSen__5441852A" StoreEntitySet="UserPlant">
+            <EndProperty Name="UserPlant">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Sensor">
+              <ScalarProperty Name="Id" ColumnName="IdSensor" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__UserPlant__IdUse__534D60F1" TypeName="TccJobModel.FK__UserPlant__IdUse__534D60F1" StoreEntitySet="UserPlant">
+            <EndProperty Name="UserPlant">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="IdUser" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

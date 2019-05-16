@@ -1,0 +1,32 @@
+﻿@model TCC.ViewModels.LoginViewModel
+@{
+    Layout = null;
+}
+
+@Styles.Render("~/Content/css")
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+@Scripts.Render("~/bundles/modernizr")
+
+<div class="container-fluid">
+    <div class="form">
+        @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true);
+            <div class="form-group">
+                @Html.LabelFor(f => f.Login)
+                <br />
+                @Html.TextBoxFor(f => f.Login, htmlAttributes:new {@class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(f => f.Password)
+                <br />
+                @Html.PasswordFor(f => f.Password, htmlAttributes:new {@class = "form-control" })
+            </div>
+
+            <button type="submit" class="btn btn-primary float-right">Login</button>
+        }
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

@@ -1,0 +1,13 @@
+﻿.form {
+    width: 25%;
+    display: block;
+    margin: auto;
+    margin-top: 13%;
+}
+
+.form form {
+    margin-top: 40%;
+    padding: 70px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}

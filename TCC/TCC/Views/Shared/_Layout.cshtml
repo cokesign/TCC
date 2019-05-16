@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @Html.Action("NavBar", "Shared")
+    <div class="body-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 nopadding">
+                    @Html.Action("SideBar", "Shared")
+                </div>
+                <div class="col-md-10 nopadding">
+                    @RenderBody()
+                    <footer>
+                        <p>@DateTime.Now.Year - All Rights Reserved</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
