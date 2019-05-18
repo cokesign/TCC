@@ -16,6 +16,8 @@ namespace TCC.Controllers
         public ActionResult NavBar()
         {
             ViewBag.User = "Pedro";
+
+
             return View();
         }
     }

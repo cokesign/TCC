@@ -1,8 +1,11 @@
-﻿body {
+﻿html, body {
+    height: 100%;
     line-height: 1;
 }
 
-.body-content {
+.full-height {
+    min-height: 100%;
+    height: 100%;
 }
 
 .navbar.navbar-expand-lg.navbar-light.bg-light.navbar-dark.bg-dark{
@@ -19,7 +22,7 @@
 
 footer {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
 }
 
 footer p {
@@ -30,3 +33,4 @@ footer p {
 .nopadding {
     padding: 0;
 }
+

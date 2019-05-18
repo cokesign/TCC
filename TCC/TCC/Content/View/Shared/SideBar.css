@@ -45,7 +45,6 @@ a:focus {
 }
 
 #sidebar {
-    min-width: 250px;
     min-height: 100%;
     background: #343a40;
     color: #fff;

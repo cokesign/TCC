@@ -153,6 +153,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Menu.cs" />
+    <Compile Include="Helper\MenuItem.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -394,7 +396,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

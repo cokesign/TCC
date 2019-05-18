@@ -10,13 +10,13 @@
 </head>
 <body>
     @Html.Action("NavBar", "Shared")
-    <div class="body-content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-2 nopadding">
+    <div class="body-content full-height">
+        <div class="container-fluid full-height">
+            <div class="row full-height">
+                <div class="col-md-2 nopadding full-height">
                     @Html.Action("SideBar", "Shared")
                 </div>
-                <div class="col-md-10 nopadding">
+                <div class="col-md-10 nopadding full-height">
                     @RenderBody()
                     <footer>
                         <p>@DateTime.Now.Year - All Rights Reserved</p>
