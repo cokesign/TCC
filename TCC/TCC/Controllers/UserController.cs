@@ -17,6 +17,7 @@ namespace TCC.Controllers
         // GET: User
         public ActionResult Index()
         {
+            ViewBag.Title = "Usuarios";
             return View(db.User.ToList());
         }
 

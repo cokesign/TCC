@@ -17,6 +17,7 @@ namespace TCC.Controllers
         // GET: Sensor
         public ActionResult Index()
         {
+            ViewBag.Title = "Sensores";
             return View(db.Sensor.ToList());
         }
 

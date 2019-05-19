@@ -1,9 +1,9 @@
-﻿@model TCC.Models.Plant
+﻿@model TCC.Models.Category
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+        
     <div class="form-horizontal">
         <h4>@ViewBag.Title</h4>
         <hr />
@@ -33,7 +33,7 @@
         </div>
     </div>
 }
-
+    
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

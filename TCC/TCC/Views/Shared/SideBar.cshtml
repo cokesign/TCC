@@ -6,19 +6,31 @@
     <div class="sidebar-header">
         <h3>SideBar</h3>
     </div>
-
     <ul class="list-unstyled components">
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            @Html.ActionLink("Inicio", "Index", "Home")
+        </li>
+        <li>
+            <a href="#Plants" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Plantas</a>
+            <ul class="collapse list-unstyled" id="Plants">
                 <li>
-                    <a href="#">Home 1</a>
+                    @Html.ActionLink("Listagem", "Index", "Plant")
                 </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#Categories" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categorias</a>
+            <ul class="collapse list-unstyled" id="Categories">
                 <li>
-                    <a href="#">Home 2</a>
+                    @Html.ActionLink("Listagem", "Index", "Category")
                 </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#Sensor" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sensores</a>
+            <ul class="collapse list-unstyled" id="Sensor">
                 <li>
-                    <a href="#">Home 3</a>
+                    @Html.ActionLink("Listagem", "Index", "Sensor")
                 </li>
             </ul>
         </li>

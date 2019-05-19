@@ -17,6 +17,7 @@ namespace TCC.Controllers
         // GET: Plant
         public ActionResult Index()
         {
+            ViewBag.Title = "Plantas";
             return View(db.Plant.ToList());
         }
 

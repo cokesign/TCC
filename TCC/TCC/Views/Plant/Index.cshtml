@@ -6,18 +6,16 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<button type="button" class="btn btn-success">@Html.ActionLink("Adicionar", "Create")</button>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayName("Descricao")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Active)
+            @Html.DisplayName("Ativo")
         </th>
-        <th></th>
+        <th>Acoes</th>
     </tr>
 
 @foreach (var item in Model) {

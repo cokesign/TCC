@@ -11,6 +11,7 @@ namespace TCC.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Login";
             return View();
         }
 

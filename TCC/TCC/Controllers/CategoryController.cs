@@ -10,13 +10,14 @@ using TCC.Models;
 
 namespace TCC.Controllers
 {
-    public class CategorieController : Controller
+    public class CategoryController : Controller
     {
         private Entities db = new Entities();
 
         // GET: Categorie
         public ActionResult Index()
         {
+            ViewBag.Title = "Categoria";
             return View(db.Category.ToList());
         }
 
