@@ -1,38 +1,38 @@
 ﻿@model IEnumerable<TCC.Models.Sensor>
 
-@{
-    ViewBag.Title = "Index";
-}
+<title>@ViewBag.Title</title>
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <button type="button" class="btn btn-success">@Html.ActionLink("Adicionar", "Create")</button>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Descricao")
-        </th>
-        <th>
-            @Html.DisplayName("Ativo")
-        </th>
-        <th>Acoes</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table table-striped">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th>
+                @Html.DisplayName("Descricao")
+            </th>
+            <th>
+                @Html.DisplayName("Ativo")
+            </th>
+            <th>Acoes</th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
