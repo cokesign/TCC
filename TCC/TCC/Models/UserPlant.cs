@@ -15,6 +15,9 @@ namespace TCC.Models
     public partial class UserPlant
     {
         public int Id { get; set; }
+        public int IdPlant { get; set; }
+        public int IdUser { get; set; }
+        public int IdSensor { get; set; }
         public int ReadingTime { get; set; }
         public bool Active { get; set; }
     

@@ -27,6 +27,7 @@ namespace TCC.Models
         public string LastName { get; set; }
         public int Age { get; set; }
         public bool Active { get; set; }
+        public string Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPlant> UserPlant { get; set; }

@@ -4,10 +4,8 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table table-striped">
+<button type="button" class="btn btn-primary">@Html.ActionLink("Adicionar", "Create")</button>
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -16,7 +14,7 @@
             <th>
                 @Html.DisplayName("Nome")
             </th>
-            <th>Acoes</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -30,9 +28,8 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a href="@Url.Action("Edit", new { id = item.Id })" title="Editar"><i class="far fa-edit"></i></a>
+                    <a href="javascript:void(0)" onclick="Delete(@item.Id, '@Url.Action("Edit")')" title="Remover"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
         }

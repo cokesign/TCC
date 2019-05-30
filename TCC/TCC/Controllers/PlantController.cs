@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Helper;
 using TCC.Models;
+using TCC.ViewModels;
 
 namespace TCC.Controllers
 {
@@ -14,16 +16,15 @@ namespace TCC.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: Plant
         public ActionResult Index()
         {
             ViewBag.Title = "Plantas";
             return View(db.Plant.ToList());
         }
 
-        // GET: Plant/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Title = "Plantas";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,22 +37,24 @@ namespace TCC.Controllers
             return View(plant);
         }
 
-        // GET: Plant/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.Title = "Plantas";
+            var Plant = new PlantViewModel() {
+                Category = new SelectList(db.Category, "Id", "Description", null)
+            };
+            return View(Plant);
         }
 
-        // POST: Plant/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Active")] Plant plant)
+        public ActionResult Create([Bind(Include = "Id,IdCategory,Description,Active")] PlantViewModel plant)
         {
             if (ModelState.IsValid)
             {
-                db.Plant.Add(plant);
+                var Plant = new Plant();
+                Helper.Helper.Mapper(Plant,plant);
+                db.Plant.Add(Plant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,9 +62,9 @@ namespace TCC.Controllers
             return View(plant);
         }
 
-        // GET: Plant/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Plantas";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -71,49 +74,39 @@ namespace TCC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(plant);
+            var Plant = new PlantViewModel();
+            Helper.Helper.Mapper(Plant, plant);
+            Plant.Category = new SelectList(db.Category.AsNoTracking().Where(w => w.Active), "Id", "Description", plant.IdCategory ?? null);
+            return View(Plant);
         }
 
-        // POST: Plant/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,Active")] Plant plant)
+        public ActionResult Edit([Bind(Include = "Id,IdCategory,Description,Active")] PlantViewModel plant)
         {
+            ViewBag.Title = "Plantas";
             if (ModelState.IsValid)
             {
-                db.Entry(plant).State = EntityState.Modified;
+                var Plant = new Plant();
+                Helper.Helper.Mapper(Plant, plant);
+                db.Entry(Plant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(plant);
         }
 
-        // GET: Plant/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Plant plant = db.Plant.Find(id);
-            if (plant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(plant);
-        }
-
-        // POST: Plant/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public JsonResult Delete(int id)
         {
             Plant plant = db.Plant.Find(id);
             db.Plant.Remove(plant);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new GenericJsonResult()
+            {
+                OK = true,
+                Message = "Deletado com Sucesso!"
+            }, JsonRequestBehavior.DenyGet);
         }
 
         protected override void Dispose(bool disposing)

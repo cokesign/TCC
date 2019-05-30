@@ -4,17 +4,17 @@
 
 <h2>@ViewBag.Title</h2>
 
-<button type="button" class="btn btn-success">@Html.ActionLink("Adicionar", "Create")</button>
-<table class="table table-striped">
+<button type="button" class="btn btn-primary">@Html.ActionLink("Adicionar", "Create")</button>
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayName("Descricao")
+                @Html.DisplayName("Descrição")
             </th>
             <th>
                 @Html.DisplayName("Ativo")
             </th>
-            <th>Acoes</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -28,9 +28,8 @@
                     @Html.DisplayFor(modelItem => item.Active)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a href="@Url.Action("Edit", new { id = item.Id })" title="Editar"><i class="far fa-edit"></i></a>
+                    <a href="javascript:void(0)" onclick="Delete(@item.Id, '@Url.Action("Delete")')" title="Remover"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Helper;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -14,16 +15,15 @@ namespace TCC.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: Categorie
         public ActionResult Index()
         {
             ViewBag.Title = "Categoria";
             return View(db.Category.ToList());
         }
 
-        // GET: Categorie/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Title = "Categoria";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,19 +36,17 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // GET: Categorie/Create
         public ActionResult Create()
         {
+            ViewBag.Title = "Categoria";
             return View();
         }
 
-        // POST: Categorie/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Description,Active")] Category category)
         {
+            ViewBag.Title = "Categoria";
             if (ModelState.IsValid)
             {
                 db.Category.Add(category);
@@ -59,9 +57,9 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // GET: Categorie/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Categoria";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -74,13 +72,11 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // POST: Categorie/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Description,Active")] Category category)
         {
+            ViewBag.Title = "Categoria";
             if (ModelState.IsValid)
             {
                 db.Entry(category).State = EntityState.Modified;
@@ -90,30 +86,17 @@ namespace TCC.Controllers
             return View(category);
         }
 
-        // GET: Categorie/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Category.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
-        // POST: Categorie/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public JsonResult Delete(int id)
         {
             Category category = db.Category.Find(id);
             db.Category.Remove(category);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new GenericJsonResult()
+            {
+                OK = true,
+                Message = "Deletado com Sucesso!"
+            }, JsonRequestBehavior.DenyGet);
         }
 
         protected override void Dispose(bool disposing)

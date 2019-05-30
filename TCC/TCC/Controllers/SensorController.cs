@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Helper;
 using TCC.Models;
 
 namespace TCC.Controllers
@@ -14,16 +15,15 @@ namespace TCC.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: Sensor
         public ActionResult Index()
         {
             ViewBag.Title = "Sensores";
             return View(db.Sensor.ToList());
         }
 
-        // GET: Sensor/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Title = "Sensores";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,19 +36,17 @@ namespace TCC.Controllers
             return View(sensor);
         }
 
-        // GET: Sensor/Create
         public ActionResult Create()
         {
+            ViewBag.Title = "Sensores";
             return View();
         }
 
-        // POST: Sensor/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Description,Active")] Sensor sensor)
         {
+            ViewBag.Title = "Sensores";
             if (ModelState.IsValid)
             {
                 db.Sensor.Add(sensor);
@@ -59,9 +57,9 @@ namespace TCC.Controllers
             return View(sensor);
         }
 
-        // GET: Sensor/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Sensores";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -74,13 +72,11 @@ namespace TCC.Controllers
             return View(sensor);
         }
 
-        // POST: Sensor/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Description,Active")] Sensor sensor)
         {
+            ViewBag.Title = "Sensores";
             if (ModelState.IsValid)
             {
                 db.Entry(sensor).State = EntityState.Modified;
@@ -90,30 +86,17 @@ namespace TCC.Controllers
             return View(sensor);
         }
 
-        // GET: Sensor/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Sensor sensor = db.Sensor.Find(id);
-            if (sensor == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sensor);
-        }
-
-        // POST: Sensor/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public JsonResult Delete(int id)
         {
             Sensor sensor = db.Sensor.Find(id);
             db.Sensor.Remove(sensor);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new GenericJsonResult()
+            {
+                OK = true,
+                Message = "Deletado com Sucesso!"
+            }, JsonRequestBehavior.DenyGet);
         }
 
         protected override void Dispose(bool disposing)

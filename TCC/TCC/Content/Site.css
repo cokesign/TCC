@@ -40,6 +40,14 @@ button {
     line-height: 1.2;
 }
 
-h2{
+h2, h4{
     margin-top: 0.5rem;
+}
+
+.table th::before {
+    display: none !important;
+}
+
+.table th::after {
+    display: none !important;
 }

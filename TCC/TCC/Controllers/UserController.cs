@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Helper;
 using TCC.Models;
+using TCC.ViewModels;
 
 namespace TCC.Controllers
 {
@@ -14,16 +16,15 @@ namespace TCC.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: User
         public ActionResult Index()
         {
             ViewBag.Title = "Usuarios";
             return View(db.User.ToList());
         }
 
-        // GET: User/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Title = "Usuarios";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,15 +37,12 @@ namespace TCC.Controllers
             return View(user);
         }
 
-        // GET: User/Create
         public ActionResult Create()
         {
+            ViewBag.Title = "Usuarios";
             return View();
         }
 
-        // POST: User/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Login,Password,Name,LastName,Age,Active")] User user)
@@ -59,9 +57,9 @@ namespace TCC.Controllers
             return View(user);
         }
 
-        // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Title = "Usuarios";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -74,13 +72,11 @@ namespace TCC.Controllers
             return View(user);
         }
 
-        // POST: User/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Login,Password,Name,LastName,Age,Active")] User user)
         {
+            ViewBag.Title = "Usuarios";
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
@@ -90,30 +86,16 @@ namespace TCC.Controllers
             return View(user);
         }
 
-        // GET: User/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.User.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: User/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public JsonResult Delete(int id)
         {
             User user = db.User.Find(id);
             db.User.Remove(user);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new GenericJsonResult() {
+                OK = true,
+                Message = "Deletado com Sucesso!"
+            }, JsonRequestBehavior.DenyGet);
         }
 
         protected override void Dispose(bool disposing)
