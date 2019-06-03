@@ -1,10 +1,5 @@
 ﻿$(document).ready(function () {
     $(".table").DataTable({
-        "columns": [
-            null,
-            null,
-            { "orderable": false }
-        ],
         "language": {
             "decimal": "",
             "emptyTable": "Nenhum Resultado.",
@@ -44,7 +39,7 @@ function Delete(id, url) {
         if (willDelete) {
             Ajax(url + `?id=${id}`, "post", null, "Deletado!", "Registro Deletado com Sucesso!", "success");
         } else {
-            swal("Erro", "Cancelado Com Sucesso", "error");
+            swal("Cancelado!", "Cancelado Com Sucesso", "error");
         }
     });
 }

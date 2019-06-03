@@ -18,6 +18,10 @@ namespace TCC.ViewModels
         [Required]
         [Display(Name = "Categoria")]
         public int IdCategory { get; set; }
+        [Display(Name = "Umidade Minima")]
+        public decimal MinMoisture { get; set; }
+        [Display(Name = "Umidade Maxima")]
+        public decimal MaxMoisture { get; set; }
 
         public SelectList Category { get; set; }
     }

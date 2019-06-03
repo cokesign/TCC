@@ -48,7 +48,7 @@ namespace TCC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,IdCategory,Description,Active")] PlantViewModel plant)
+        public ActionResult Create([Bind(Include = "Id,IdCategory,Description,Active,MinMoisture,MaxMoisture")] PlantViewModel plant)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace TCC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,IdCategory,Description,Active")] PlantViewModel plant)
+        public ActionResult Edit([Bind(Include = "Id,IdCategory,Description,Active,MinMoisture,MaxMoisture")] PlantViewModel plant)
         {
             ViewBag.Title = "Plantas";
             if (ModelState.IsValid)

@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f08fc50a43a64fd6bbd67037fa0fc62d" Name="Diagram1">
-        <EntityTypeShape EntityType="TccJobModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TccJobModel.Plant" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TccJobModel.Sensor" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TccJobModel.User" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TccJobModel.UserPlant" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="TccJobModel.FK__Plant__IdCategor__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdPla__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdSen__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdUse__534D60F1" ManuallyRouted="false" />
+      <Diagram DiagramId="f08fc50a43a64fd6bbd67037fa0fc62d" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="TccJobModel.Category" Width="1.5" PointX="6.25" PointY="3.5" />
+        <EntityTypeShape EntityType="TccJobModel.Plant" Width="1.5" PointX="8.125" PointY="3.5" />
+        <EntityTypeShape EntityType="TccJobModel.Sensor" Width="1.5" PointX="13" PointY="6.875" />
+        <EntityTypeShape EntityType="TccJobModel.User" Width="1.5" PointX="11.375" PointY="6.875" />
+        <EntityTypeShape EntityType="TccJobModel.UserPlant" Width="1.5" PointX="10.125" PointY="3.5" />
+        <AssociationConnector Association="TccJobModel.FK__Plant__IdCategor__4F7CD00D" />
+        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdPla__52593CB8" />
+        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdSen__5441852A" />
+        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdUse__534D60F1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
