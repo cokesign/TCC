@@ -150,6 +150,7 @@
     <Compile Include="Controllers\SensorController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserPlantController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +190,7 @@
     <Compile Include="Helper\GenericJsonResult.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\PlantViewModel.cs" />
+    <Compile Include="ViewModels\UserPlantViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -202,6 +204,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\14981913076415291.svg" />
     <Content Include="Images\Home.png" />
     <Content Include="Models\Entities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -216,6 +219,7 @@
       <DependentUpon>Entities.edmx</DependentUpon>
       <LastGenOutput>Entities.cs</LastGenOutput>
     </Content>
+    <Content Include="Plugins\Chart.bundle.js" />
     <Content Include="Plugins\DataTables\AutoFill-2.3.3\css\autoFill.bootstrap.css" />
     <Content Include="Plugins\DataTables\AutoFill-2.3.3\css\autoFill.bootstrap.min.css" />
     <Content Include="Plugins\DataTables\AutoFill-2.3.3\css\autoFill.bootstrap4.css" />
@@ -687,6 +691,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\View\UserPlant\UserPlant.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -729,10 +734,11 @@
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\UserPlant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\View\Plant\" />
+    <Folder Include="Content\View\UserPlant\" />
     <Folder Include="Strings\" />
   </ItemGroup>
   <ItemGroup>

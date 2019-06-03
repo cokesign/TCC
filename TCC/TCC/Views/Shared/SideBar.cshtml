@@ -4,7 +4,7 @@
 
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h3>@Html.ActionLink("SideBar", "Index", "Home")</h3>
+        <img class="img-fluid" src="~/Images/14981913076415291.svg"/>
     </div>
     <ul class="list-unstyled components">
         <li>
@@ -39,6 +39,14 @@
             <ul class="collapse list-unstyled" id="User">
                 <li>
                     @Html.ActionLink("Listagem", "Index", "User")
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#UserPlant" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Relatorios</a>
+            <ul class="collapse list-unstyled" id="UserPlant">
+                <li>
+                    @Html.ActionLink("Relatorios", "Index", "UserPlant")
                 </li>
             </ul>
         </li>

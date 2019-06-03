@@ -27,7 +27,7 @@ namespace TCC.Controllers
             using (var DB = new Entities()){
                 var user = DB.User.FirstOrDefault(f => f.Login == model.Login);
 
-                if (user != null)
+                if (user != null && user.Password == model.Password)
                     return RedirectToAction("Index", "Home");
                 else
                     return View("Index");

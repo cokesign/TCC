@@ -21,7 +21,7 @@ namespace TCC.Models
         }
     
         public int Id { get; set; }
-        public Nullable<int> IdCategory { get; set; }
+        public int IdCategory { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
         public Nullable<decimal> MinMoisture { get; set; }

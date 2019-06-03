@@ -25,7 +25,9 @@ namespace TCC
                       "~/Plugins/Swal.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                      "~/Scripts/Site.js"));
+                      "~/Scripts/Site.js",
+                      "~/Plugins/Chart.bundle.js",
+                      "~/Scripts/View/UserPlant/UserPlant.js"));
 
             //Styles
             bundles.Add(new StyleBundle("~/Content/css").Include(

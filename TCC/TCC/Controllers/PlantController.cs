@@ -76,7 +76,7 @@ namespace TCC.Controllers
             }
             var Plant = new PlantViewModel();
             Helper.Helper.Mapper(Plant, plant);
-            Plant.Category = new SelectList(db.Category.AsNoTracking().Where(w => w.Active), "Id", "Description", plant.IdCategory ?? null);
+            Plant.Category = new SelectList(db.Category.AsNoTracking().Where(w => w.Active), "Id", "Description", plant.IdCategory);
             return View(Plant);
         }
 
