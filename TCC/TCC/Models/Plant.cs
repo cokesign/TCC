@@ -21,11 +21,9 @@ namespace TCC.Models
         }
     
         public int Id { get; set; }
-        public int IdCategory { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
-        public Nullable<decimal> MinMoisture { get; set; }
-        public Nullable<decimal> MaxMoisture { get; set; }
+        public Nullable<int> Category_Id { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -15,11 +15,12 @@ namespace TCC.Models
     public partial class UserPlant
     {
         public int Id { get; set; }
-        public int IdPlant { get; set; }
-        public int IdUser { get; set; }
-        public int IdSensor { get; set; }
-        public int ReadingTime { get; set; }
+        public System.DateTime ReadingTime { get; set; }
         public bool Active { get; set; }
+        public int Plant_Id { get; set; }
+        public int Sensor_Id { get; set; }
+        public int User_Id { get; set; }
+        public Nullable<decimal> Humidity { get; set; }
     
         public virtual Plant Plant { get; set; }
         public virtual Sensor Sensor { get; set; }

@@ -25,6 +25,17 @@
             }
         }
     });
+
+    $.ajaxStart(function () {
+        $('body').prepend(
+            `<button id="loading" class="btn btn-primary" type="button" disabled="">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading... 
+            </button>`);
+    });
+
+    $.ajaxComplete(function () {
+        $('#loading').remove();
+    });
 });
 
 function Delete(id, url) {
@@ -48,7 +59,7 @@ function Ajax(url, method, data, title, text, swalType, contentType = "applicati
     $.ajax({
         url: url,
         method: method,
-        data: data,/*object*/
+        data: data,
         contentType: contentType,
         complete: function (response, status) {
             if (response.responseJSON.OK) {
