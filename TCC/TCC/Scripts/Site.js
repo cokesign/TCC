@@ -26,14 +26,14 @@
         }
     });
 
-    $.ajaxStart(function () {
+    $(document).ajaxStart(function () {
         $('body').prepend(
             `<button id="loading" class="btn btn-primary" type="button" disabled="">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading... 
             </button>`);
     });
 
-    $.ajaxComplete(function () {
+    $(document).ajaxComplete(function () {
         $('#loading').remove();
     });
 });

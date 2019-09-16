@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TCC.Controllers.API;
 
 namespace TCC.Controllers
 {
@@ -10,6 +11,7 @@ namespace TCC.Controllers
     {
         public ActionResult Index()
         {
+            //Simulador.ExecutaSimulador(5000);
             return View();
         }
     }

@@ -2,16 +2,9 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/15/2019 13:41:47
+-- Date Created: 09/15/2019 18:28:10
 -- Generated from EDMX file: C:\DEV\TCC\TCC\TCC\Models\Entities.edmx
 -- --------------------------------------------------
-
-SET QUOTED_IDENTIFIER OFF;
-GO
-USE [TccJob];
-GO
-IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
-GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -30,7 +23,7 @@ CREATE TABLE [dbo].[Plant] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Description] varchar(50)  NOT NULL,
     [Active] bit  NOT NULL,
-    [Category_Id] int  NULL
+    [IdCategory] int  NULL
 );
 GO
 
@@ -57,12 +50,19 @@ GO
 -- Creating table 'UserPlant'
 CREATE TABLE [dbo].[UserPlant] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [ReadingTime] DATETIME  NOT NULL,
+    [ReadingTime] datetime  NOT NULL,
     [Active] bit  NOT NULL,
-    [Plant_Id] int  NOT NULL,
-    [Sensor_Id] int  NOT NULL,
-    [User_Id] int  NOT NULL,
-	[Humidity] DECIMAL(18,4)
+    [IdPlant] int  NOT NULL,
+    [IdSensor] int  NOT NULL,
+    [IdUser] int  NOT NULL,
+    [Humidity] decimal(18,3)  NULL
+);
+GO
+
+-- Creating table 'Configuration'
+CREATE TABLE [dbo].[Configuration] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [SearchTime] BIGINT  NOT NULL,
 );
 GO
 
@@ -106,8 +106,8 @@ GO
 
 -- Creating foreign key on [Category_Id] in table 'Plant'
 ALTER TABLE [dbo].[Plant]
-ADD CONSTRAINT [FK__Plant__IdCategor__4F7CD00D]
-    FOREIGN KEY ([Category_Id])
+ADD CONSTRAINT [FK__Plant__IdCategory__4F7CD00D]
+    FOREIGN KEY ([IdCategory])
     REFERENCES [dbo].[Category]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -116,28 +116,28 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK__Plant__IdCategor__4F7CD00D'
 CREATE INDEX [IX_FK__Plant__IdCategor__4F7CD00D]
 ON [dbo].[Plant]
-    ([Category_Id]);
+    ([IdCategory]);
 GO
 
 -- Creating foreign key on [Plant_Id] in table 'UserPlant'
 ALTER TABLE [dbo].[UserPlant]
-ADD CONSTRAINT [FK__UserPlant__IdPla__52593CB8]
-    FOREIGN KEY ([Plant_Id])
+ADD CONSTRAINT [FK__UserPlant__IdPlant__52593CB8]
+    FOREIGN KEY ([IdPlant])
     REFERENCES [dbo].[Plant]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK__UserPlant__IdPla__52593CB8'
-CREATE INDEX [IX_FK__UserPlant__IdPla__52593CB8]
+CREATE INDEX [IX_FK__UserPlant__IdPlant__52593CB8]
 ON [dbo].[UserPlant]
-    ([Plant_Id]);
+    ([IdPlant]);
 GO
 
 -- Creating foreign key on [Sensor_Id] in table 'UserPlant'
 ALTER TABLE [dbo].[UserPlant]
 ADD CONSTRAINT [FK__UserPlant__IdSen__5441852A]
-    FOREIGN KEY ([Sensor_Id])
+    FOREIGN KEY ([IdSensor])
     REFERENCES [dbo].[Sensor]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -146,13 +146,13 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK__UserPlant__IdSen__5441852A'
 CREATE INDEX [IX_FK__UserPlant__IdSen__5441852A]
 ON [dbo].[UserPlant]
-    ([Sensor_Id]);
+    ([IdSensor]);
 GO
 
 -- Creating foreign key on [User_Id] in table 'UserPlant'
 ALTER TABLE [dbo].[UserPlant]
 ADD CONSTRAINT [FK__UserPlant__IdUse__534D60F1]
-    FOREIGN KEY ([User_Id])
+    FOREIGN KEY (IdUser)
     REFERENCES [dbo].[User]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -161,7 +161,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK__UserPlant__IdUse__534D60F1'
 CREATE INDEX [IX_FK__UserPlant__IdUse__534D60F1]
 ON [dbo].[UserPlant]
-    ([User_Id]);
+    ([IdUser]);
 GO
 
 -- --------------------------------------------------

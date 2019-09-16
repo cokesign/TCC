@@ -51,3 +51,10 @@ h2, h4{
 .table th::after {
     display: none !important;
 }
+
+#img-logo {
+    width: 31% !important;
+    position: absolute !important;
+    top: -52px !important;
+    left: 14px !important;
+}

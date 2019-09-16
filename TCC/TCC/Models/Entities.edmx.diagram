@@ -10,8 +10,8 @@
         <EntityTypeShape EntityType="TccJobModel.Sensor" Width="1.5" PointX="3" PointY="9" />
         <EntityTypeShape EntityType="TccJobModel.User" Width="1.5" PointX="3" PointY="5.75" />
         <EntityTypeShape EntityType="TccJobModel.UserPlant" Width="1.5" PointX="5.25" PointY="1" />
-        <AssociationConnector Association="TccJobModel.FK__Plant__IdCategor__4F7CD00D" />
-        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdPla__52593CB8" />
+        <AssociationConnector Association="TccJobModel.FK__Plant__IdCategory__4F7CD00D" />
+        <AssociationConnector Association="TccJobModel.FK__UserPlant__IdPlant__52593CB8" />
         <AssociationConnector Association="TccJobModel.FK__UserPlant__IdSen__5441852A" />
         <AssociationConnector Association="TccJobModel.FK__UserPlant__IdUse__534D60F1" />
       </Diagram>

@@ -20,7 +20,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="Category_Id" Type="int" />
+          <Property Name="IdCategory" Type="int" />
         </EntityType>
         <EntityType Name="Sensor">
           <Key>
@@ -49,12 +49,12 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ReadingTime" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="Plant_Id" Type="int" Nullable="false" />
-          <Property Name="Sensor_Id" Type="int" Nullable="false" />
-          <Property Name="User_Id" Type="int" Nullable="false" />
-          <Property Name="Humidity" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="IdPlant" Type="int" Nullable="false" />
+          <Property Name="IdSensor" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Humidity" Type="decimal" Precision="18" Scale="3" />
         </EntityType>
-        <Association Name="FK__Plant__IdCategor__4F7CD00D">
+        <Association Name="FK__Plant__IdCategory__4F7CD00D">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Plant" Type="Self.Plant" Multiplicity="*" />
           <ReferentialConstraint>
@@ -62,11 +62,11 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Plant">
-              <PropertyRef Name="Category_Id" />
+              <PropertyRef Name="IdCategory" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPlant__IdPla__52593CB8">
+        <Association Name="FK__UserPlant__IdPlant__52593CB8">
           <End Role="Plant" Type="Self.Plant" Multiplicity="1" />
           <End Role="UserPlant" Type="Self.UserPlant" Multiplicity="*" />
           <ReferentialConstraint>
@@ -74,7 +74,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserPlant">
-              <PropertyRef Name="Plant_Id" />
+              <PropertyRef Name="IdPlant" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -86,7 +86,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserPlant">
-              <PropertyRef Name="Sensor_Id" />
+              <PropertyRef Name="IdSensor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -98,7 +98,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserPlant">
-              <PropertyRef Name="User_Id" />
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -108,11 +108,11 @@
           <EntitySet Name="Sensor" EntityType="Self.Sensor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserPlant" EntityType="Self.UserPlant" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Plant__IdCategor__4F7CD00D" Association="Self.FK__Plant__IdCategor__4F7CD00D">
+          <AssociationSet Name="FK__Plant__IdCategory__4F7CD00D" Association="Self.FK__Plant__IdCategory__4F7CD00D">
             <End Role="Category" EntitySet="Category" />
             <End Role="Plant" EntitySet="Plant" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPlant__IdPla__52593CB8" Association="Self.FK__UserPlant__IdPla__52593CB8">
+          <AssociationSet Name="FK__UserPlant__IdPlant__52593CB8" Association="Self.FK__UserPlant__IdPlant__52593CB8">
             <End Role="Plant" EntitySet="Plant" />
             <End Role="UserPlant" EntitySet="UserPlant" />
           </AssociationSet>
@@ -135,11 +135,11 @@
           <EntitySet Name="Sensor" EntityType="TccJobModel.Sensor" />
           <EntitySet Name="User" EntityType="TccJobModel.User" />
           <EntitySet Name="UserPlant" EntityType="TccJobModel.UserPlant" />
-          <AssociationSet Name="FK__Plant__IdCategor__4F7CD00D" Association="TccJobModel.FK__Plant__IdCategor__4F7CD00D">
+          <AssociationSet Name="FK__Plant__IdCategory__4F7CD00D" Association="TccJobModel.FK__Plant__IdCategory__4F7CD00D">
             <End Role="Category" EntitySet="Category" />
             <End Role="Plant" EntitySet="Plant" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserPlant__IdPla__52593CB8" Association="TccJobModel.FK__UserPlant__IdPla__52593CB8">
+          <AssociationSet Name="FK__UserPlant__IdPlant__52593CB8" Association="TccJobModel.FK__UserPlant__IdPlant__52593CB8">
             <End Role="Plant" EntitySet="Plant" />
             <End Role="UserPlant" EntitySet="UserPlant" />
           </AssociationSet>
@@ -159,7 +159,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Plant" Relationship="TccJobModel.FK__Plant__IdCategor__4F7CD00D" FromRole="Category" ToRole="Plant" />
+          <NavigationProperty Name="Plant" Relationship="TccJobModel.FK__Plant__IdCategory__4F7CD00D" FromRole="Category" ToRole="Plant" />
         </EntityType>
         <EntityType Name="Plant">
           <Key>
@@ -168,9 +168,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="Category_Id" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="TccJobModel.FK__Plant__IdCategor__4F7CD00D" FromRole="Plant" ToRole="Category" />
-          <NavigationProperty Name="UserPlant" Relationship="TccJobModel.FK__UserPlant__IdPla__52593CB8" FromRole="Plant" ToRole="UserPlant" />
+          <Property Name="IdCategory" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="TccJobModel.FK__Plant__IdCategory__4F7CD00D" FromRole="Plant" ToRole="Category" />
+          <NavigationProperty Name="UserPlant" Relationship="TccJobModel.FK__UserPlant__IdPlant__52593CB8" FromRole="Plant" ToRole="UserPlant" />
         </EntityType>
         <EntityType Name="Sensor">
           <Key>
@@ -201,15 +201,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ReadingTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="Plant_Id" Type="Int32" Nullable="false" />
-          <Property Name="Sensor_Id" Type="Int32" Nullable="false" />
-          <Property Name="User_Id" Type="Int32" Nullable="false" />
-          <Property Name="Humidity" Type="Decimal" Precision="18" Scale="4" />
-          <NavigationProperty Name="Plant" Relationship="TccJobModel.FK__UserPlant__IdPla__52593CB8" FromRole="UserPlant" ToRole="Plant" />
+          <Property Name="IdPlant" Type="Int32" Nullable="false" />
+          <Property Name="IdSensor" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Humidity" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="Plant" Relationship="TccJobModel.FK__UserPlant__IdPlant__52593CB8" FromRole="UserPlant" ToRole="Plant" />
           <NavigationProperty Name="Sensor" Relationship="TccJobModel.FK__UserPlant__IdSen__5441852A" FromRole="UserPlant" ToRole="Sensor" />
           <NavigationProperty Name="User" Relationship="TccJobModel.FK__UserPlant__IdUse__534D60F1" FromRole="UserPlant" ToRole="User" />
         </EntityType>
-        <Association Name="FK__Plant__IdCategor__4F7CD00D">
+        <Association Name="FK__Plant__IdCategory__4F7CD00D">
           <End Type="TccJobModel.Category" Role="Category" Multiplicity="0..1" />
           <End Type="TccJobModel.Plant" Role="Plant" Multiplicity="*" />
           <ReferentialConstraint>
@@ -217,11 +217,11 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Plant">
-              <PropertyRef Name="Category_Id" />
+              <PropertyRef Name="IdCategory" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserPlant__IdPla__52593CB8">
+        <Association Name="FK__UserPlant__IdPlant__52593CB8">
           <End Type="TccJobModel.Plant" Role="Plant" Multiplicity="1" />
           <End Type="TccJobModel.UserPlant" Role="UserPlant" Multiplicity="*" />
           <ReferentialConstraint>
@@ -229,7 +229,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserPlant">
-              <PropertyRef Name="Plant_Id" />
+              <PropertyRef Name="IdPlant" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -241,7 +241,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserPlant">
-              <PropertyRef Name="Sensor_Id" />
+              <PropertyRef Name="IdSensor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -253,7 +253,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserPlant">
-              <PropertyRef Name="User_Id" />
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -261,8 +261,8 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TccJobModelStoreContainer" CdmEntityContainer="Entities">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TccJobModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="TccJobModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -275,7 +275,7 @@
           <EntitySetMapping Name="Plant">
             <EntityTypeMapping TypeName="TccJobModel.Plant">
               <MappingFragment StoreEntitySet="Plant">
-                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -308,9 +308,9 @@
             <EntityTypeMapping TypeName="TccJobModel.UserPlant">
               <MappingFragment StoreEntitySet="UserPlant">
                 <ScalarProperty Name="Humidity" ColumnName="Humidity" />
-                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
-                <ScalarProperty Name="Sensor_Id" ColumnName="Sensor_Id" />
-                <ScalarProperty Name="Plant_Id" ColumnName="Plant_Id" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdSensor" ColumnName="IdSensor" />
+                <ScalarProperty Name="IdPlant" ColumnName="IdPlant" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="ReadingTime" ColumnName="ReadingTime" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -318,8 +318,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -333,7 +332,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

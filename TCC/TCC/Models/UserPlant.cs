@@ -17,9 +17,9 @@ namespace TCC.Models
         public int Id { get; set; }
         public System.DateTime ReadingTime { get; set; }
         public bool Active { get; set; }
-        public int Plant_Id { get; set; }
-        public int Sensor_Id { get; set; }
-        public int User_Id { get; set; }
+        public int IdPlant { get; set; }
+        public int IdSensor { get; set; }
+        public int IdUser { get; set; }
         public Nullable<decimal> Humidity { get; set; }
     
         public virtual Plant Plant { get; set; }
