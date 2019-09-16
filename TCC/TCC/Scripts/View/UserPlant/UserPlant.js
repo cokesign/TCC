@@ -75,39 +75,42 @@ function chartData() {
         type: 'line',
         data: {
             labels: labels,
-            datasets: [{
-                label: 'Consumo Medio',
-                backgroundColor: window.chartColors.red,
-                borderColor: window.chartColors.red,
-                fill: false,
-                data: [
-                    2,
-                    4,
-                    6,
-                    8,
-                    10,
-                    20,
-                    30
-                ]
-            }, {
-                label: 'Seu Consumo',
-                backgroundColor: window.chartColors.blue,
-                borderColor: window.chartColors.blue,
-                fill: false,
-                data: [
-                    2,
-                    4,
-                    6,
-                    9,
-                    12,
-                    15,
-                    18,
-                    20,
-                    23,
-                    27,
-                    30
-                ]
-            }]
+            datasets: [
+                {
+                    label: 'Consumo Medio',
+                    backgroundColor: window.chartColors.red,
+                    borderColor: window.chartColors.red,
+                    fill: false,
+                    data: [
+                        2,
+                        4,
+                        6,
+                        8,
+                        10,
+                        20,
+                        30
+                    ]
+                },
+                {
+                    label: 'Seu Consumo',
+                    backgroundColor: window.chartColors.blue,
+                    borderColor: window.chartColors.blue,
+                    fill: false,
+                    data: [
+                        2,
+                        4,
+                        6,
+                        9,
+                        12,
+                        15,
+                        18,
+                        20,
+                        23,
+                        27,
+                        30
+                    ]
+                }
+            ]
         },
         options: {
             responsive: true,
