@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+         google.charts.load('current', { 'packages': ['bar'] });
+         google.charts.setOnLoadCallback(drawChart);
+
+         function drawChart() {
+             var data = google.visualization.arrayToDataTable([
+                 ['Dia da Semana', 'Planta 1', 'Planta 2', 'Planta 3'],
+                 ['01', 7, 11, 5],
+                 ['01', 12, 16, 10],
+                 ['01', 15, 19, 15],
+                 ['01', 21, 23, 19]
+             ]);
+
+             var options = {
+                 chart: {
+                     title: 'Medições'
+                 },
+                 bars: 'vertical',
+                 vAxis: { format: 'decimal' },
+                 height: 400,
+                 colors: ['#1b9e77', '#d95f02', '#7570b3']
+             };
+
+             var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
+             chart.draw(data, google.charts.Bar.convertOptions(options));
+
+             var btns = document.getElementById('btn-group');
+
+             btns.onclick = function (e) {
+
+                 if (e.target.tagName === 'BUTTON') {
+                     options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
+                     chart.draw(data, google.charts.Bar.convertOptions(options));
+                 }
+             }
+         }
+    </script>
+</head>
+<body>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="chart_div"></div>
+</body>
+</html>
