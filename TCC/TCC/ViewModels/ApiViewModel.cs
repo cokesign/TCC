@@ -14,7 +14,7 @@ namespace TCC.ViewModels
     {
         public int IdSensor { get; set; }
         public int IdPlanta { get; set; }
-        public decimal Humidade{ get; set; }
+        public decimal Umidade{ get; set; }
         public DateTime HoraLeitura { get; set; }
     }
 }

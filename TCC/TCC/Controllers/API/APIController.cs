@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Script.Serialization;
 using TCC.Models;
 using TCC.ViewModels;
 
@@ -23,7 +21,7 @@ namespace TCC.Controllers.API
                     if (m == null)
                         throw new Exception("Valores Enviados Incorretamente");
 
-                    if(m.Humidade == 0)
+                    if(m.Umidade == 0)
                         throw new Exception("Valor humidade incorreto");
                     if (m.IdPlanta == 0)
                         throw new Exception("Valor IdPlanta incorreto");
@@ -33,7 +31,7 @@ namespace TCC.Controllers.API
                     var userPlant = new UserPlant()
                     {
                         Active = true,
-                        Humidity = m.Humidade,
+                        Humidity = m.Umidade,
                         IdPlant = m.IdPlanta,
                         IdSensor = m.IdSensor,
                         IdUser = 1,
@@ -49,6 +47,26 @@ namespace TCC.Controllers.API
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, $"Erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        [Route("Api/ConfigInicial")]
+        public string ConfigInicial()
+        {
+            try
+            {
+                using (var db = new Entities())
+                {
+                    var config = db.Configuration.Find(1);
+
+                    var obj = $"{config.Minutes ?? 30}";
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+                return "";
             }
         }
     }
