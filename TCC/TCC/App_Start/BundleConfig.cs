@@ -35,7 +35,9 @@ namespace TCC
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/View/Shared/SideBar.css",
-                      "~/Content/View/Shared/NavBar.css",
+                      "~/Content/View/Shared/NavBar.css"));
+
+            bundles.Add(new StyleBundle("~/Index/css").Include(
                       "~/Content/View/Security/Index.css"));
 
             bundles.Add(new StyleBundle("~/Plugins/css").Include(

@@ -120,6 +120,7 @@ body {
     border-radius: 0 4px 4px 0px;
     width: 35px;
     transition-delay: 0.3s;
+    z-index: 1;
 }
 
 .page-wrapper.toggled #show-sidebar {

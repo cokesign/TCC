@@ -22,6 +22,12 @@
         }
     });
 
+    let bodyWidth = $("body").css("width").replace("px", "");
+    if (bodyWidth > 600)
+        $(".page-wrapper").addClass("toggled");
+    else
+        $(".page-wrapper").removeClass("toggled");
+
     $("#close-sidebar").click(function () {
         $(".page-wrapper").removeClass("toggled");
     });
