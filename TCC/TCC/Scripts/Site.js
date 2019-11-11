@@ -23,7 +23,8 @@
                 "sortAscending": ": Ativar Ordenacao Crescente.",
                 "sortDescending": ": Ativar Ordenacao Decrescente."
             }
-        }
+        },
+        responsive: true
     });
 
     $(document).ajaxStart(function () {

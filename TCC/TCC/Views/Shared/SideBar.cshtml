@@ -1,54 +1,116 @@
 ﻿@{ 
     Layout = null;
 }
+<nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+        <div class="sidebar-brand">
+            <a href="#">pro sidebar</a>
+            <div id="close-sidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        @Html.Action("Details", "User")
+        <!-- sidebar-header  -->
+        <!--<div class="sidebar-search">
+            <div>
+                <div class="input-group">
+                    <input type="text" class="form-control search-menu" placeholder="Search...">
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- sidebar-search -->
+        <div class="sidebar-menu">
+            <ul>
+                <li class="header-menu">
+                    <span>Geral</span>
+                </li>
+                <li>
+                    <a href="/Home">
+                        <i class="fa fa-home"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fas fa-seedling"></i>
+                        <span>Plantas</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "Plant")">
+                                    <span>Listagem</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fas fa-users"></i>
+                        <span>Usuarios</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "User")">
+                                    <span>Listagem</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                        <i class="fas fa-satellite-dish"></i>
+                        <span>Sensores</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index", "Sensor")">
+                                    <span>Listagem</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-<nav id="sidebar">
-    <div class="sidebar-header">
-        <img id="img-logo" class="img-fluid" src="~/Images/14981913076415291.svg"/>
+                @*Parte de Baixo*@
+                <li class="header-menu">
+                    <span>Relatorios</span>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "UserPlant")">
+                        <i class="fa fa-book"></i>
+                        <span>Consumo de Agua</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- sidebar-menu  -->
     </div>
-    <ul class="list-unstyled components">
-        <li>
-            @Html.ActionLink("Inicio", "Index", "Home")
-        </li>
-        <li>
-            <a href="#Plants" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Plantas</a>
-            <ul class="collapse list-unstyled" id="Plants">
-                <li>
-                    @Html.ActionLink("Listagem", "Index", "Plant")
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#Categories" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Categorias</a>
-            <ul class="collapse list-unstyled" id="Categories">
-                <li>
-                    @Html.ActionLink("Listagem", "Index", "Category")
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#Sensor" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sensores</a>
-            <ul class="collapse list-unstyled" id="Sensor">
-                <li>
-                    @Html.ActionLink("Listagem", "Index", "Sensor")
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#User" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Usuarios</a>
-            <ul class="collapse list-unstyled" id="User">
-                <li>
-                    @Html.ActionLink("Listagem", "Index", "User")
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#UserPlant" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Relatorios</a>
-            <ul class="collapse list-unstyled" id="UserPlant">
-                <li>
-                    @Html.ActionLink("Relatorios", "Index", "UserPlant")
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+        @*<a href="#">
+            <i class="fa fa-bell"></i>
+            <span class="badge badge-pill badge-warning notification">3</span>
+        </a>
+        <a href="#">
+            <i class="fa fa-envelope"></i>
+            <span class="badge badge-pill badge-success notification">7</span>
+        </a>*@
+        <a href="@Url.Action("Edit", "Configuration")">
+            <i class="fa fa-cog"></i>
+            @*<span class="badge-sonar"></span>*@
+        </a>
+        <a href="@Url.Action("Index", "Security")">
+            <i class="fa fa-power-off"></i>
+        </a>
+    </div>
 </nav>

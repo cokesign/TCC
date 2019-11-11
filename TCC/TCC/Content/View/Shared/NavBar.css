@@ -1,0 +1,14 @@
+﻿.navbar {
+    width: 86%;
+    margin-left: 14%;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+}
+
+.navbar a {
+    color: #818896;
+}

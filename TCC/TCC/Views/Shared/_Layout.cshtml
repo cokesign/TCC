@@ -10,23 +10,17 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @Html.Action("NavBar", "Shared")
-    <div class="body-content full-height">
-        <div class="container-fluid full-height">
-            <div class="row full-height">
-                <div class="col-md-2 nopadding full-height">
-                    @Html.Action("SideBar", "Shared")
-                </div>
-                <div class="col-md-10 nopadding full-height">
-                    <div class="container-fluid">
-                        @RenderBody()
-                    </div>
-                    <footer>
-                        <p>@DateTime.Now.Year - All Rights Reserved</p>
-                    </footer>
-                </div>
-            </div>
-        </div>
+    <div class="page-wrapper chiller-theme">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="fas fa-bars"></i>
+        </a>
+        @Html.Action("SideBar", "Shared")
+        @Html.Action("NavBar", "Shared")
+        <!-- sidebar-wrapper  -->
+        <main class="page-content">
+            @RenderBody()
+        </main>
+        <!-- page-content" -->
     </div>
 
     @Scripts.Render("~/bundles/jquery")

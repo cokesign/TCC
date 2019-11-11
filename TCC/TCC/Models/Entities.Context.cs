@@ -26,6 +26,7 @@ namespace TCC.Models
         }
     
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Configuration> Configuration { get; set; }
         public virtual DbSet<Plant> Plant { get; set; }
         public virtual DbSet<Sensor> Sensor { get; set; }
         public virtual DbSet<User> User { get; set; }

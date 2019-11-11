@@ -4,17 +4,12 @@
 
 <h2>@ViewBag.Title</h2>
 
-<button type="button" class="btn btn-primary">@Html.ActionLink("Adicionar", "Create")</button>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>
                 @Html.DisplayName("Descrição")
             </th>
-            <th>
-                @Html.DisplayName("Ativo")
-            </th>
-            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -23,13 +18,6 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Active)
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit", new { id = item.Id })" title="Editar"><i class="far fa-edit"></i></a>
-                    <a href="javascript:void(0)" onclick="Delete(@item.Id, '@Url.Action("Delete")')" title="Remover"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
         }

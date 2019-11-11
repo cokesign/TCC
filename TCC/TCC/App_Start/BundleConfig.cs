@@ -27,13 +27,15 @@ namespace TCC
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                       "~/Scripts/Site.js",
                       "~/Plugins/Chart.bundle.js",
-                      "~/Scripts/View/UserPlant/UserPlant.js"));
+                      "~/Scripts/View/UserPlant/UserPlant.js",
+                      "~/Scripts/View/Shared/SideBar.js"));
 
             //Styles
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/Site.css",
                       "~/Content/View/Shared/SideBar.css",
+                      "~/Content/View/Shared/NavBar.css",
                       "~/Content/View/Security/Index.css"));
 
             bundles.Add(new StyleBundle("~/Plugins/css").Include(

@@ -13,6 +13,17 @@
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Timer" Type="bit" Nullable="false" />
+          <Property Name="Minutes" Type="int" />
+          <Property Name="Schedule" Type="bit" Nullable="false" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="Garden" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Plant">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,6 +40,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Port" Type="varchar" MaxLength="4" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -104,6 +116,7 @@
         </Association>
         <EntityContainer Name="TccJobModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plant" EntityType="Self.Plant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sensor" EntityType="Self.Sensor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -131,6 +144,7 @@
       <Schema Namespace="TccJobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="TccJobModel.Category" />
+          <EntitySet Name="Configuration" EntityType="TccJobModel.Configuration" />
           <EntitySet Name="Plant" EntityType="TccJobModel.Plant" />
           <EntitySet Name="Sensor" EntityType="TccJobModel.Sensor" />
           <EntitySet Name="User" EntityType="TccJobModel.User" />
@@ -161,6 +175,17 @@
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Plant" Relationship="TccJobModel.FK__Plant__IdCategory__4F7CD00D" FromRole="Category" ToRole="Plant" />
         </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Timer" Type="Boolean" Nullable="false" />
+          <Property Name="Minutes" Type="Int32" />
+          <Property Name="Schedule" Type="Boolean" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="Garden" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="Plant">
           <Key>
             <PropertyRef Name="Id" />
@@ -179,6 +204,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Port" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserPlant" Relationship="TccJobModel.FK__UserPlant__IdSen__5441852A" FromRole="Sensor" ToRole="UserPlant" />
         </EntityType>
         <EntityType Name="User">
@@ -272,6 +298,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Configuration">
+            <EntityTypeMapping TypeName="TccJobModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="Garden" ColumnName="Garden" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+                <ScalarProperty Name="Minutes" ColumnName="Minutes" />
+                <ScalarProperty Name="Timer" ColumnName="Timer" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Plant">
             <EntityTypeMapping TypeName="TccJobModel.Plant">
               <MappingFragment StoreEntitySet="Plant">
@@ -285,6 +323,7 @@
           <EntitySetMapping Name="Sensor">
             <EntityTypeMapping TypeName="TccJobModel.Sensor">
               <MappingFragment StoreEntitySet="Sensor">
+                <ScalarProperty Name="Port" ColumnName="Port" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

@@ -10,11 +10,11 @@ namespace TCC.ViewModels
 
     }
 
-    public class RelatoriosModel
+    public class RelatoriosViewModel
     {
         public int IdSensor { get; set; }
         public int IdPlanta { get; set; }
-        public decimal humidade{ get; set; }
-        public DateTime horaLeitura { get; set; }
+        public decimal Humidade{ get; set; }
+        public DateTime HoraLeitura { get; set; }
     }
 }

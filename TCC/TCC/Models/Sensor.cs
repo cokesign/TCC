@@ -23,6 +23,7 @@ namespace TCC.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
+        public string Port { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPlant> UserPlant { get; set; }

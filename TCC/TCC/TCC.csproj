@@ -146,6 +146,7 @@
     <Compile Include="Controllers\API\APIController.cs" />
     <Compile Include="Controllers\API\Simulador.cs" />
     <Compile Include="Controllers\Basic\CategoryController.cs" />
+    <Compile Include="Controllers\Basic\ConfigurationController.cs" />
     <Compile Include="Controllers\Basic\HomeController.cs" />
     <Compile Include="Controllers\Basic\PlantController.cs" />
     <Compile Include="Controllers\Basic\SecurityController.cs" />
@@ -159,6 +160,9 @@
     <Compile Include="Helper\Helper.cs" />
     <Compile Include="Helper\Menu.cs" />
     <Compile Include="Models\Category.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Configuration.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities.Context.cs">
@@ -191,6 +195,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper\GenericJsonResult.cs" />
     <Compile Include="ViewModels\ApiViewModel.cs" />
+    <Compile Include="ViewModels\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\HelperViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\PlantViewModel.cs" />
     <Compile Include="ViewModels\UserPlantViewModel.cs" />
@@ -203,12 +209,14 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\View\Security\Index.css" />
+    <Content Include="Content\View\Shared\NavBar.css" />
     <Content Include="Content\View\Shared\SideBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\14981913076415291.svg" />
     <Content Include="Images\Home.png" />
+    <Content Include="Images\user.jpg" />
     <Content Include="Models\Entities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Entities.edmx</DependentUpon>
@@ -695,6 +703,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\View\Shared\SideBar.js" />
     <Content Include="Scripts\View\UserPlant\UserPlant.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -717,17 +726,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Security\Index.cshtml" />
-    <Content Include="Views\Shared\SideBar.cshtml" />
     <Content Include="Views\Shared\NavBar.cshtml" />
     <Content Include="Views\Plant\Index.cshtml" />
     <Content Include="Views\Plant\Create.cshtml" />
     <Content Include="Views\Plant\Edit.cshtml" />
     <Content Include="Views\Plant\Delete.cshtml" />
     <Content Include="Views\Plant\Details.cshtml" />
-    <Content Include="Views\Sensor\Create.cshtml" />
-    <Content Include="Views\Sensor\Delete.cshtml" />
-    <Content Include="Views\Sensor\Details.cshtml" />
-    <Content Include="Views\Sensor\Edit.cshtml" />
     <Content Include="Views\Sensor\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
@@ -739,6 +743,8 @@
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\UserPlant\Index.cshtml" />
+    <Content Include="Views\Shared\SideBar.cshtml" />
+    <Content Include="Views\Configuration\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

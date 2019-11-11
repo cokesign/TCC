@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using TCC.Helper;
 using TCC.Models;
-using TCC.ViewModels;
 
 namespace TCC.Controllers
 {
@@ -24,16 +19,7 @@ namespace TCC.Controllers
 
         public ActionResult Details(int? id)
         {
-            ViewBag.Title = "Usuarios";
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.User.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
+            User user = db.User.Find(1);
             return View(user);
         }
 

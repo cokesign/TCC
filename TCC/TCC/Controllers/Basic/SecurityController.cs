@@ -33,5 +33,12 @@ namespace TCC.Controllers
                     return View("Index");
             }
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Logout(LoginViewModel model)
+        {
+            return View("Index", "Security");
+        }
     }
 }

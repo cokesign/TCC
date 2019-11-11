@@ -1,66 +1,21 @@
 ﻿@model TCC.Models.User
 
 @{
-    ViewBag.Title = "Details";
+    Layout = null;
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Login)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Login)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-
-    </dl>
+<div class="sidebar-header">
+    <div class="user-pic">
+        <img class="img-responsive img-rounded" src="~/Images/user.jpg" alt="User picture">
+    </div>
+    <div class="user-info">
+        <span class="user-name">
+            @Model.Name
+            <strong>@Model.LastName</strong>
+        </span>
+        <span class="user-role">Administrador</span>
+        <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+        </span>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

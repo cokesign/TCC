@@ -44,7 +44,7 @@ namespace TCC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Active")] Sensor sensor)
+        public ActionResult Create([Bind(Include = "Id,Description,Active,Port")] Sensor sensor)
         {
             ViewBag.Title = "Sensores";
             if (ModelState.IsValid)
@@ -74,7 +74,7 @@ namespace TCC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,Active")] Sensor sensor)
+        public ActionResult Edit([Bind(Include = "Id,Description,Active,Port")] Sensor sensor)
         {
             ViewBag.Title = "Sensores";
             if (ModelState.IsValid)

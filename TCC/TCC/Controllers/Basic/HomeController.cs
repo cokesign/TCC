@@ -11,7 +11,6 @@ namespace TCC.Controllers
     {
         public ActionResult Index()
         {
-            //Simulador.ExecutaSimulador(5000);
             return View();
         }
     }

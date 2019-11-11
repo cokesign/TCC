@@ -4,11 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f08fc50a43a64fd6bbd67037fa0fc62d" Name="Diagram1" ZoomLevel="98">
+      <Diagram DiagramId="f08fc50a43a64fd6bbd67037fa0fc62d" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="TccJobModel.Category" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="TccJobModel.Configuration" Width="1.5" PointX="5.75" PointY="4.75" />
         <EntityTypeShape EntityType="TccJobModel.Plant" Width="1.5" PointX="3" PointY="1.375" />
-        <EntityTypeShape EntityType="TccJobModel.Sensor" Width="1.5" PointX="3" PointY="9" />
-        <EntityTypeShape EntityType="TccJobModel.User" Width="1.5" PointX="3" PointY="5.75" />
+        <EntityTypeShape EntityType="TccJobModel.Sensor" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="TccJobModel.User" Width="1.5" PointX="3" PointY="7.875" />
         <EntityTypeShape EntityType="TccJobModel.UserPlant" Width="1.5" PointX="5.25" PointY="1" />
         <AssociationConnector Association="TccJobModel.FK__Plant__IdCategory__4F7CD00D" />
         <AssociationConnector Association="TccJobModel.FK__UserPlant__IdPlant__52593CB8" />

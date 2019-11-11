@@ -47,6 +47,13 @@ CREATE TABLE [dbo].[User] (
 );
 GO
 
+CREATE TABLE [dbo].[Configuration] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Active] BIT NOT NULL,
+	[Interval] INT
+);
+GO
+
 -- Creating table 'UserPlant'
 CREATE TABLE [dbo].[UserPlant] (
     [Id] int IDENTITY(1,1) NOT NULL,
